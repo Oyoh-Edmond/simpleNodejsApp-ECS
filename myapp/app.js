@@ -14,9 +14,7 @@ const appVersion = packageJson.version;
 
 // console.log('App Version:', appVersion);
 
-
 // Set EJS as the view engine
-
 app.use('/public',express.static(path.join(__dirname,'static')))
 
 app.set('view engine', 'ejs');
