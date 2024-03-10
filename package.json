@@ -1,0 +1,20 @@
+{
+  "name": "simplenodejsapp-ecs",
+  "version": "1.0.0",
+  "description": "a simple web frontend app that displays the hostname of the server it’s running on and a version number on a web UI.",
+  "main": "myapp/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Oyoh-Edmond/simpleNodejsApp-ECS"
+  },
+  "author": "Oyoh Edmond",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.18.3"
+  }
+}
