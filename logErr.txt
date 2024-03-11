@@ -1,0 +1,53 @@
+Error: 
+    After running 
+    ```
+    Docker run -it -p 3000:3000 <imagename>
+    ```
+    docker: Error response from daemon: Ports are not available: 
+    exposing port TCP 0.0.0.0:3000 -> 0.0.0.0:0: 
+    listen tcp 0.0.0.0:3000: bind: Only one usage of each 
+    socket address (protocol/network address/port) is normally permitted.
+
+    Docker is unable to bind to the specified port because 
+    it's already in use. The port 3000 seems to be occupied 
+    by another process on your system.
+
+    The error message indicates that nodemon is not found 
+    within the Docker container. nodemon is a utility that 
+    monitors for changes in your source code and automatically 
+    restarts your server. It's typically used during development
+    to streamline the development process.
+
+
+Solution:
+    To fix this issue, you need to ensure that nodemon is installed 
+    as a dependency of your Node.js application and included 
+    in the Docker container. Here's how you can do it:
+
+    1. Install nodemon as a development dependency:
+        ```
+        npm install --save-dev nodemon
+
+        ```
+    2. Update the start script
+        ```
+            {
+                "name": "simplenodejsapp-ecs",
+                "version": "1.0.0",
+                "scripts": {
+                    "start": "nodemon app.js"
+                },
+                "devDependencies": {
+                    "nodemon": "^2.0.7"
+                }
+            }
+        ```
+    3. Rebuild your Docker image:
+        ```
+        docker build -t <imagename> .
+        ```
+
+    4. Run your Docker container:
+        ```
+        docker run -it -p 3001:3000 <imagename>
+        ```   
