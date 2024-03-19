@@ -1,4 +1,5 @@
-name: build-push-img
+name: docker-img
+
 on:  
   push:
     branches:
