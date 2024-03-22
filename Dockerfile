@@ -1,10 +1,16 @@
-FROM node:18.16.0-alpine3.17
+ARG NODE_VERSION=${{ inputs.node-version }}
+
+FROM node:${NODE_VERSION}
+
+
 
 WORKDIR usr/src/app
 
 COPY package*.json  .
 
 RUN npm install
+
+# RUN echo $VERSION > image_version
 
 COPY . .
 
